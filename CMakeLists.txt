@@ -1,15 +1,11 @@
-set(COMPONENT_SRCDIRS
-    "src"
-)
+idf_build_get_property(components_to_build BUILD_COMPONENTS)
 
-set(COMPONENT_ADD_INCLUDEDIRS
-    "src"
-)
+set(srcs    "src/AsyncTCP.cpp")
+set(include "src")
 
-set(COMPONENT_REQUIRES
-    "arduino-esp32"
-)
+idf_component_register(SRCS "${srcs}"
+                       INCLUDE_DIRS ${include}
+                       REQUIRES "FEmbed-Arduino FEmbed-OS lwip"
+                       PRIV_REQUIRES ${priv_requires})
 
-register_component()
-
-target_compile_options(${COMPONENT_TARGET} PRIVATE -fno-rtti)
+target_compile_options(${COMPONENT_LIB} PRIVATE -fno-rtti)
