@@ -32,6 +32,11 @@ extern "C"{
 #include "esp_task_wdt.h"
 #include "hal-misc.h"
 
+#ifdef  LOG_TAG
+#undef  LOG_TAG
+#endif
+#define LOG_TAG                             "AsyncTCP"
+
 /*
  * TCP/IP Event Task
  * */
